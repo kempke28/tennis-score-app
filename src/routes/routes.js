@@ -1,4 +1,4 @@
-export const Game = '/Game';
+export const SelectGame = '/selectGame';
 export const History = '/History';
 export const Home = '/';
 export const Score = '/Score';
