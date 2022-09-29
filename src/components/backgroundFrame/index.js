@@ -25,7 +25,7 @@ export default function Background() {
   const randomImg = Math.floor(Math.random() * images.length);
 
   return (
-    <div className="backgroundWrapper">
+    <div>
       <img
         className="backgroundFrame"
         style={{ backgroundImage: `url(${images[randomImg]})` }}></img>
