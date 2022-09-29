@@ -1,12 +1,15 @@
 import React from 'react';
-import {} from 'react-router-dom';
+import * as ROUTES from './routes/routes.js';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+import Main from './pages/main';
+
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hallo</h1>
+    <div>
+      <Routes>
+        <Route path={ROUTES.Home} element={<Main />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
