@@ -8,15 +8,20 @@ import * as ROUTES from '../../routes/routes.js';
 export default function Main() {
   return (
     <div className="buttonContainer">
-      <div className="matchButton">
-        <Link to={ROUTES.Score}><Button>Continue Match</Button></Link>
+      <div className="mainButtons">
+        <Link to={ROUTES.Score}>
+          <Button>Continue Match</Button>
+        </Link>
       </div>
-      <div className="matchButton">
-        <Button to={ROUTES.Score}>New Match</Button>
-
+      <div className="mainButtons">
+        <Link to={ROUTES.SelectGame}>
+          <Button>New Match</Button>
+        </Link>
       </div>
-      <div className="matchButton">
-        <Button to={ROUTES.History}>Match History</Button>
+      <div className="mainButtons">
+        <Link to={ROUTES.History}>
+          <Button>Match History</Button>
+        </Link>
       </div>
     </div>
   );
