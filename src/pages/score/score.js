@@ -6,7 +6,9 @@ export default function Score() {
     //score Pointer
     //interactive Buttons
     <div>
-      <h2>Hello</h2>
+      <div>
+        <h2>score</h2>
+      </div>
     </div>
   );
 }
