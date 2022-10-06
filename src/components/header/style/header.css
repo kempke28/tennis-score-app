@@ -1,0 +1,15 @@
+.headerContainer {
+    width: 75vw;
+    border: red 9px solid;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: white
+}
