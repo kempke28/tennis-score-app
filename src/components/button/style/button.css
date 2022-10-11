@@ -8,3 +8,7 @@
     opacity: 99%;
     cursor:pointer;
 }
+
+.settingButton {
+    margin: 40px 20px 20px 20px;
+}

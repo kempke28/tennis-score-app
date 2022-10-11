@@ -1,8 +1,7 @@
 .browsingContainer {
   display: flex;
   align-content: center;
-  height: 100vh;
   flex-direction: column;
+  height: 100vh;
   padding: 30px;
-  justify-content: flex-start;
 }
