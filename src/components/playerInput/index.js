@@ -7,7 +7,7 @@ export default function PlayerInput({ children }) {
   return <form className="inputForm">{children}</form>;
 }
 
-PlayerInput.Input = function Input({ children, ...props }) {
+PlayerInput.Input = function Input({ children, type, name, ...props }) {
   const [info, setInfo] = useState('Player Name');
   const type = props.type;
   const name = props.name;
