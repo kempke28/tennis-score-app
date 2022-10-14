@@ -9,15 +9,16 @@ import GlobalStyle from './globalstyle/globalStyle';
 export default function App() {
   return (
     <GlobalStyle>
-      <Background />
-      <BrowsingContainer>
-        <Routes>
-          <Route path={ROUTES.Home} element={<Home />} />
-          <Route path={ROUTES.Score} element={<Score />} />
-          <Route path={ROUTES.SelectGame} element={<SelectGame />} />
-          <Route path={ROUTES.History} element={<History />} />
-        </Routes>
-      </BrowsingContainer>
+      <Background>
+        <BrowsingContainer>
+          <Routes>
+            <Route path={ROUTES.Home} element={<Home />} />
+            <Route path={ROUTES.Score} element={<Score />} />
+            <Route path={ROUTES.SelectGame} element={<SelectGame />} />
+            <Route path={ROUTES.History} element={<History />} />
+          </Routes>
+        </BrowsingContainer>
+      </Background>
     </GlobalStyle>
   );
 }

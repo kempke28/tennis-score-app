@@ -1,7 +1,7 @@
 import React from 'react';
 import './Style/backgroundFrame.css';
 
-export default function Background() {
+export default function Background({ children }) {
   const images = [];
 
   images[1] = './images/1.jpg';
@@ -25,10 +25,8 @@ export default function Background() {
   const randomImg = Math.floor(Math.random() * images.length);
 
   return (
-    <div>
-      <img
-        className="backgroundFrame"
-        style={{ backgroundImage: `url(${images[randomImg]})` }}></img>
+    <div className="backgroundFrame" style={{ backgroundImage: `url(${images[randomImg]})` }}>
+      {children}
     </div>
   );
 }
