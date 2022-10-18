@@ -1,35 +1,38 @@
 import React from 'react';
-import { GeneralContainer, Button, PlayerInput } from '../../components';
+import { GeneralContainer, Button, GameInput } from '../../components';
 import './style.css';
 
-export default function GameSettings({ children }) {
+export default function GameSettings({ children, ...props }) {
   //in case of any functions insert here or effects here
 
   return (
     <GeneralContainer>
-      <div>
+      <div className="settingsbuttons">
         <Button>singles</Button>
-        <Button className="optionsButton">Doubles</Button>
+        <Button>Doubles</Button>
       </div>
 
-      <div>
-        <PlayerInput>
-          {children}
-          <PlayerInput.Input>player1</PlayerInput.Input>
-          <PlayerInput.Input>player2</PlayerInput.Input>
-          <PlayerInput.Input>player3</PlayerInput.Input>
-          <PlayerInput.Input>player4</PlayerInput.Input>
-        </PlayerInput>
-      </div>
+      <GameInput>
+        <GameInput.PlayerForm>
+          <GameInput.InputContainer>
+            <GameInput.Input>player1</GameInput.Input>
+            <GameInput.Input>player2</GameInput.Input>
+          </GameInput.InputContainer>
+          <GameInput.InputContainer>
+            <GameInput.Input>player3</GameInput.Input>
+            <GameInput.Input>player4</GameInput.Input>
+          </GameInput.InputContainer>
+        </GameInput.PlayerForm>
+      </GameInput>
 
-      <div>
-        <PlayerInput>
-          <PlayerInput.Input type={'radio'}>7 Points</PlayerInput.Input>
-          <PlayerInput.Input type={'radio'}>10 Points</PlayerInput.Input>
-        </PlayerInput>
-      </div>
+      <GameInput.PlayerForm>
+        <GameInput.InputContainer direction={'row'}>
+          <GameInput.Input type={'radio'}>7 Points</GameInput.Input>
+          <GameInput.Input type={'radio'}>10 Points</GameInput.Input>
+        </GameInput.InputContainer>
+      </GameInput.PlayerForm>
 
-      <div>
+      <div className="settingsbuttons">
         <Button>Start normal</Button>
         <Button>Start adv</Button>
       </div>

@@ -1,10 +1,14 @@
 import React from 'react';
-import './style/button.css';
+import { Button, SettingsButton } from './style/button';
 
-export default function Button({ to, children }) {
+export default function BasicButton({ to, children, ...props }) {
   return (
-    <button to={to} type="button" className="access_button">
+    <Button to={to} {...props}>
       {children}
-    </button>
+    </Button>
   );
 }
+
+BasicButton.SetttingsButton = function SetButton({ children, ...Props }) {
+  return <SettingsButton {...Props}>{children}</SettingsButton>;
+};

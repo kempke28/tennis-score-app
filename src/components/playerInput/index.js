@@ -1,21 +1,31 @@
 import React from 'react';
+import { GameInputContainer, PlayerForm, InputContainer, LabelPlayer, InputPlayer } from './style/style';
+
 import { useState } from 'react';
 
-import './style/player.css';
-
-export default function PlayerInput({ children }) {
-  return <form className="inputForm">{children}</form>;
+export default function GameInput({ children }) {
+  return <GameInputContainer>{children}</GameInputContainer>;
 }
 
-PlayerInput.Input = function Input({ children, type, name, ...props }) {
+GameInput.PlayerForm = function GameInputPlayerForm({ children, ...props }) {
+  return <PlayerForm>{children}</PlayerForm>;
+};
+
+GameInput.InputContainer = function GameInputContainer({
+  children,
+  direction = 'column',
+  ...props
+}) {
+  return <InputContainer direction={direction}>{children}</InputContainer>;
+};
+
+GameInput.Input = function Input({ children, type, name, ...props }) {
   const [info, setInfo] = useState('Player Name');
-  const type = props.type;
-  const name = props.name;
 
   return (
-    <label htmlFor="player">
+    <LabelPlayer htmlFor="player">
       {children}
-      <input
+      <InputPlayer
         id="player"
         className="inputPlayer"
         type={type}
@@ -23,6 +33,6 @@ PlayerInput.Input = function Input({ children, type, name, ...props }) {
         value={info}
         onChange={(e) => setInfo(e.target.value)}
       />
-    </label>
+    </LabelPlayer>
   );
 };
