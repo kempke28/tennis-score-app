@@ -8,26 +8,26 @@ import * as ROUTES from "../../routes/routes";
 
 export default function GameSettings({ children, ...props }) {
   //in case of any functions insert here or effects here
-  const [isToggled, setIsToggled] = useState(false);
+  const [isDouble, setIsDouble] = useState(false);
 
   return (
     <GeneralContainer>
       <div className="settingsbuttons">
-        <Button onClick={() => setIsToggled(!isToggled)}>singles</Button>
-        <Button onClick={() => setIsToggled(!isToggled)}>Doubles</Button>
+        <Button onClick={() => setIsDouble(false)}>Singles</Button>
+        <Button onClick={() => setIsDouble(true)}>Doubles</Button>
       </div>
 
       <GameInput>
         <GameInput.PlayerForm>
           <GameInput.InputContainer>
-            <GameInput.Input>player1</GameInput.Input>
-            <GameInput.Input>player2</GameInput.Input>
+            <GameInput.Input>Player1</GameInput.Input>
+            <GameInput.Input>Player2</GameInput.Input>
           </GameInput.InputContainer>
 
-          {isToggled && (
+          {isDouble && (
             <GameInput.InputContainer>
-              <GameInput.Input>player3</GameInput.Input>
-              <GameInput.Input>player4</GameInput.Input>
+              <GameInput.Input>Player3</GameInput.Input>
+              <GameInput.Input>Player4</GameInput.Input>
             </GameInput.InputContainer>
           )}
         </GameInput.PlayerForm>
