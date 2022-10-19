@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
+import { Link } from 'react-router-dom';
 import './style.css';
+import * as ROUTES from "../../routes/routes";
 
 export default function GameSettings({ children, ...props }) {
   //in case of any functions insert here or effects here
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <GeneralContainer>
       <div className="settingsbuttons">
-        <Button>singles</Button>
-        <Button>Doubles</Button>
+        <Button onClick={() => setIsToggled(!isToggled)}>singles</Button>
+        <Button onClick={() => setIsToggled(!isToggled)}>Doubles</Button>
       </div>
 
       <GameInput>
@@ -18,10 +21,13 @@ export default function GameSettings({ children, ...props }) {
             <GameInput.Input>player1</GameInput.Input>
             <GameInput.Input>player2</GameInput.Input>
           </GameInput.InputContainer>
-          <GameInput.InputContainer>
-            <GameInput.Input>player3</GameInput.Input>
-            <GameInput.Input>player4</GameInput.Input>
-          </GameInput.InputContainer>
+
+          {isToggled && (
+            <GameInput.InputContainer>
+              <GameInput.Input>player3</GameInput.Input>
+              <GameInput.Input>player4</GameInput.Input>
+            </GameInput.InputContainer>
+          )}
         </GameInput.PlayerForm>
       </GameInput>
 
@@ -33,8 +39,13 @@ export default function GameSettings({ children, ...props }) {
       </GameInput.PlayerForm>
 
       <div className="settingsbuttons">
-        <Button>Start normal</Button>
-        <Button>Start adv</Button>
+          <Link to={ROUTES.Score}>
+              <Button>Start normal</Button>
+          </Link>
+        <Link to={ROUTES.ScoreAdv}>
+            <Button>Start adv</Button>
+        </Link>
+
       </div>
     </GeneralContainer>
   );
