@@ -1,3 +1,16 @@
-.optionsButton {
-    margin: 40px 10px 20px 10px;
+.settingsbuttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.playerInputs {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.inputsSection {
+    display: flex;
+    flex-direction: column;
 }

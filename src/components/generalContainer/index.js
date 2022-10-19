@@ -1,6 +1,6 @@
 import React from 'react';
-import './style/generalContainer.css';
+import { GeneralContainer } from './style/generalContainer';
 
-export default function GeneralContainer({ children }) {
-  return <div className="generalContainer">{children}</div>;
+export default function GenContainer({ children, height = '70vh' }) {
+  return <GeneralContainer height={height}>{children}</GeneralContainer>;
 }

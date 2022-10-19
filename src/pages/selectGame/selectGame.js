@@ -8,7 +8,6 @@ import './styles/selectGame.css';
 export default function SelectGame() {
   return (
     //functions
-    // header - check
     //game type singles doubles
     //player types
     //scoretype
