@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
 import { Link } from 'react-router-dom';
+
 import './style.css';
 import * as ROUTES from "../../routes/routes";
 
@@ -45,7 +47,6 @@ export default function GameSettings({ children, ...props }) {
         <Link to={ROUTES.ScoreAdv}>
             <Button>Start adv</Button>
         </Link>
-
       </div>
     </GeneralContainer>
   );
