@@ -1,0 +1,9 @@
+14:48:54.260 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+14:48:54.468 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+14:49:21.452 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - tennisscore-86be3-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 142ms, init: 0ms
+14:49:21.545 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace tennisscore-86be3-default-rtdb status Active to Active
+14:49:34.688 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace tennisscore-86be3, but the emulator is configured for tennisscore-86be3-default-rtdb. To 
+opt-out of single project mode add/set the single_project_mode: false property in 
+the firebase.json emulators config. 
+14:49:34.698 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - tennisscore-86be3 successfully activated FBKV (SurveyIdle(0)) wait: 0ms, init: 0ms
