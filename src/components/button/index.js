@@ -1,16 +1,16 @@
 import React from 'react';
-import { Button, SettingsButton } from './style/button';
+import { StyledButton, SettingsButton } from './style/button';
 
-export default function BasicButton({ to, children, ...props }) {
+export default function Button({children, ...props }) {
   return (
 
-    <Button to={to} {...props}>
+    <StyledButton {...props}>
       {children}
-    </Button>
+    </StyledButton>
   );
 }
 
-BasicButton.SetttingsButton = function SetButton({ children, ...Props }) {
+Button.SetttingsButton = function SetButton({ children, ...Props }) {
   return <SettingsButton {...Props}>{children}</SettingsButton>;
 };
 
