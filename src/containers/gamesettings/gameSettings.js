@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './style.css';
 import * as ROUTES from '../../routes/routes';
@@ -8,21 +8,20 @@ import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../../firebase/config/firebase-config';
 
 export default function GameSettings({ children, ...props }) {
-  //in case of any functions insert here or effects here
   const navigate = useNavigate();
   //Database variables
   const matchRef = collection(db, 'match');
 
-  const [isDouble, setIsDouble] = useState(false);
-  const [typeSet, setTypeSet] = useState(false);
+  const [matchType, setMatchType] = useState(false);
   const [matchSettings, setMatchSettings] = useState({
+    matchType: '', //input
     player1: '', //input
     player2: '', //input
     player3: '', //input
     player4: '', //input
-    setType: '', //input
-    type: '',
-    finalScore: '' //score id
+    tieBreak: '', //radio input
+    finalScore: [], //score id
+    profilePicUrl: ''
   });
 
   const handleChange = (e) => {
@@ -32,24 +31,29 @@ export default function GameSettings({ children, ...props }) {
       [e.target.name]: e.target.value
     }));
   };
+
   console.log(matchSettings);
 
   const saveMatch = async () => {
     const time = new Date();
     const emptyMatchRef = doc(matchRef);
-    await setDoc(emptyMatchRef, {
-      player1: matchSettings.player1, //input
-      player2: matchSettings.player2, //input
-      player3: matchSettings.player3, //input
-      player4: matchSettings.player4, //input
-      setType: matchSettings.setType, //input
-      startOn: time, //timestamp function
-      Timer: 'Time of the match',
-      type: matchSettings.type,
-      finalScore: 'another collection databank', //score id
-      profilePicUrl: 'getProfilePicUrl()',
-      timestamp: 'serverTimestamp()'
-    });
+    try {
+      await setDoc(emptyMatchRef, {
+        matchType: matchSettings.matchType,
+        player1: matchSettings.player1, //input
+        player2: matchSettings.player2, //input
+        player3: matchSettings.player3, //input
+        player4: matchSettings.player4, //input
+        startOn: time, //timestamp function
+        Timer: 'Time of the match',
+        tieBreak: matchSettings.tieBreak,
+        finalScore: [], //score id
+        profilePicUrl: 'getProfilePicUrl()'
+      });
+    } catch (error) {
+      alert('data could not be saved');
+      //or any other message
+    }
   };
 
   const handleSubmit = async (path) => {
@@ -59,9 +63,21 @@ export default function GameSettings({ children, ...props }) {
 
   return (
     <GeneralContainer>
-      <div className="settingsbuttons">
-        <Button onClick={() => setIsDouble(false)}>Singles</Button>
-        <Button onClick={() => setIsDouble(true)}>Doubles</Button>
+      <div className="settingsButtons">
+        <Button
+          type="button"
+          name="matchType"
+          value="Singles"
+          onClick={(e) => [handleChange(e), setMatchType(false)]}>
+          Singles
+        </Button>
+        <Button
+          type="button"
+          name="matchType"
+          value="Doubles"
+          onClick={(e) => [handleChange(e), setMatchType(true)]}>
+          Doubles
+        </Button>
       </div>
 
       <GameInput>
@@ -83,7 +99,7 @@ export default function GameSettings({ children, ...props }) {
             </GameInput.Input>
           </GameInput.InputContainer>
 
-          {isDouble && (
+          {matchType && (
             <GameInput.InputContainer>
               <GameInput.Input
                 placeholder="player 3"
@@ -106,29 +122,19 @@ export default function GameSettings({ children, ...props }) {
 
       <GameInput.PlayerForm>
         <GameInput.InputContainer direction={'row'}>
-          <GameInput.Input
-            onClick={() => setTypeSet(true)}
-            type={'radio'}
-            name={'tieBreak'}
-            value={matchSettings.setType}>
+          <GameInput.Input onClick={handleChange} type="radio" name="tieBreak" value="7 points">
             7 Points
           </GameInput.Input>
-          <GameInput.Input
-            onClick={() => setTypeSet(false)}
-            type={'radio'}
-            name={'tieBreak'}
-            value={matchSettings.setType}>
+          <GameInput.Input onClick={handleChange} type="radio" name="tieBreak" value="10 Points">
             10 Points
           </GameInput.Input>
           }
         </GameInput.InputContainer>
       </GameInput.PlayerForm>
 
-      <div className="settingsbuttons">
+      <div className="settingsButtons">
         <Button onClick={() => handleSubmit(ROUTES.Score)}>Start normal</Button>
-        <Link to={ROUTES.ScoreAdv}>
-          <Button>Start adv</Button>
-        </Link>
+        <Button onClick={() => handleSubmit(ROUTES.ScoreAdv)}>Start adv</Button>
       </div>
     </GeneralContainer>
   );

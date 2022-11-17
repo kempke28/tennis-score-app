@@ -19,7 +19,6 @@ export async function saveMatches() {
        finalScore: "another collection databank", //score id
        profilePicUrl: "getProfilePicUrl()",
        timestamp: "serverTimestamp()",})
-
 }
 
 //get matches
