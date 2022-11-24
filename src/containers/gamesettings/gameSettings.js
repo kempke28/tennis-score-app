@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
 import { useNavigate } from 'react-router-dom';
+import { saveMatches } from '../../firebase/service/matches.service';
 
 import './style.css';
 import * as ROUTES from '../../routes/routes';
-import { collection, doc, setDoc } from 'firebase/firestore/lite';
-import { db } from '../../firebase/config/firebase-config';
 
 export default function GameSettings({ children, ...props }) {
   const navigate = useNavigate();
-  //Database variables
-  const matchRef = collection(db, 'match');
 
   const [matchType, setMatchType] = useState(false);
   const [matchSettings, setMatchSettings] = useState({
@@ -32,34 +29,15 @@ export default function GameSettings({ children, ...props }) {
     }));
   };
 
-  console.log(matchSettings);
-
-  const saveMatch = async () => {
-    const time = new Date();
-    const emptyMatchRef = doc(matchRef);
-    try {
-      await setDoc(emptyMatchRef, {
-        matchType: matchSettings.matchType,
-        player1: matchSettings.player1, //input
-        player2: matchSettings.player2, //input
-        player3: matchSettings.player3, //input
-        player4: matchSettings.player4, //input
-        startOn: time, //timestamp function
-        Timer: 'Time of the match',
-        tieBreak: matchSettings.tieBreak,
-        finalScore: [], //score id
-        profilePicUrl: 'getProfilePicUrl()'
-      });
-    } catch (error) {
-      alert('data could not be saved');
-      //or any other message
+  const handleSubmit = async (path) => {
+    const saveMatchesSucced = await saveMatches(matchSettings)
+    if (saveMatchesSucced) {
+      navigate(path)
+    } else {
+      navigate(ROUTES.SelectGame)
     }
   };
 
-  const handleSubmit = async (path) => {
-    await saveMatch();
-    navigate(path);
-  };
 
   return (
     <GeneralContainer>

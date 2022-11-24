@@ -1,33 +1,39 @@
-import {collection, getDocs, addDoc, doc, setDoc} from "firebase/firestore/lite";
+import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../config/firebase-config';
-
+import * as ROUTES from '../../routes/routes';
 
 // Saves a new collection to Cloud Firestore.
-export async function saveMatches() {
-    // Add a new message entry to the Firebase database.
-   const matchRef = collection(db, "match");
-   const emptyMatchRef = doc(matchRef);
-   await setDoc(emptyMatchRef, {
-       player1: "input from form",
-       player2: "input from form", //input
-       player3: "input from form", //input
-       player4: "input from form", //input
-       setType: "input from form", //input
-       startOn: "timestamp", //timestamp function
-       Timer: "ime of the match",
-       type: "input from form",
-       finalScore: "another collection databank", //score id
-       profilePicUrl: "getProfilePicUrl()",
-       timestamp: "serverTimestamp()",})
-}
+export async function saveMatches(matchSettings) {
+  const time = new Date();
+  const matchRef = collection(db, 'match');
+  const emptyMatchRef = doc(matchRef);
+  try {
+    await setDoc(emptyMatchRef, {
+      matchType: matchSettings.matchType,
+      player1: matchSettings.player1, //input
+      player2: matchSettings.player2, //input
+      player3: matchSettings.player3, //input
+      player4: matchSettings.player4, //input
+      startOn: time, //timestamp function
+      Timer: 'Time of the match',
+      tieBreak: matchSettings.tieBreak,
+      finalScore: [], //score id
+      profilePicUrl: 'getProfilePicUrl()'
+    });
+  } catch (error) {
+    alert('data could not be saved');
 
-//get matches
+    return false
+    //or any other message
+  }
+  return true
+}
 
 // Get a list of matches from your database
 
 export async function getMatches() {
-    const matchReq = collection(db, 'Matches');
-    const matchSnapshot = await getDocs(matchReq);
-    const matchList = matchSnapshot.docs.map(match => match.data(),);
-    return matchList;
+  const matchReq = collection(db, 'Matches');
+  const matchSnapshot = await getDocs(matchReq);
+  const matchList = matchSnapshot.docs.map((match) => match.data());
+  return matchList;
 }
