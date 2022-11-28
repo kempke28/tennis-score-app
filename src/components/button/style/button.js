@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   width: 230px;
   height: 80px;
   border-radius: 20px;
@@ -11,6 +11,6 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const SettingsButton = styled(Button)`
+export const SettingsButton = styled(StyledButton)`
   margin: 40px 40px 40px 40px;
 `;

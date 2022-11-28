@@ -1,5 +1,11 @@
 import React from 'react';
-import { GameInputContainer, PlayerForm, InputContainer, LabelPlayer, InputPlayer } from './style/style';
+import {
+  GameInputContainer,
+  PlayerForm,
+  InputContainer,
+  LabelPlayer,
+  InputPlayer
+} from './style/style';
 
 import { useState } from 'react';
 
@@ -19,19 +25,13 @@ GameInput.InputContainer = function GameInputContainer({
   return <InputContainer direction={direction}>{children}</InputContainer>;
 };
 
-GameInput.Input = function Input({ children, type, name, ...props }) {
-  const [info, setInfo] = useState('Player Name');
+GameInput.Input = function Input({ children, ...props }) {
 
   return (
     <LabelPlayer htmlFor="player">
       {children}
       <InputPlayer
-        id="player"
-        className="inputPlayer"
-        type={type}
-        name={name}
-        value={info}
-        onChange={(e) => setInfo(e.target.value)}
+          {...props}
       />
     </LabelPlayer>
   );
