@@ -6,7 +6,7 @@ import { saveMatches } from '../../firebase/service/matches.service';
 import './style.css';
 import * as ROUTES from '../../routes/routes';
 
-export default function GameSettings({ children, ...props }) {
+export default function GameSettings() {
   const navigate = useNavigate();
 
   const [matchType, setMatchType] = useState(false);
@@ -27,17 +27,19 @@ export default function GameSettings({ children, ...props }) {
       ...oldState,
       [e.target.name]: e.target.value
     }));
+
+    console.log('handlechange MatchSettings ', matchSettings);
   };
 
   const handleSubmit = async (path) => {
-    const saveMatchesSucced = await saveMatches(matchSettings)
+    console.log('handlechange MatchSettings ', matchSettings);
+    const saveMatchesSucced = await saveMatches(matchSettings);
     if (saveMatchesSucced) {
-      navigate(path)
+      navigate(path);
     } else {
-      navigate(ROUTES.SelectGame)
+      navigate(ROUTES.SelectGame);
     }
   };
-
 
   return (
     <GeneralContainer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderContainer from '../../containers/header';
+import HeaderContainer from '../../containers/header/header';
 import GameSettings from '../../containers/gamesettings/gameSettings';
 import { Button } from '../../components';
 
@@ -7,12 +7,6 @@ import './styles/selectGame.css';
 
 export default function SelectGame() {
   return (
-    //functions
-    //game type singles doubles
-    //player types
-    //scoretype
-    //backbutton
-
     <div className="container">
       <HeaderContainer />
       <GameSettings />

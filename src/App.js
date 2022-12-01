@@ -3,7 +3,7 @@ import * as ROUTES from './routes/routes.js';
 import { Routes, Route } from 'react-router-dom';
 import { Background, BrowsingContainer } from './components';
 
-import {SelectGame, Score, History, Home, ScoreAdv} from './pages/index';
+import { SelectGame, Score, History, Home, ScoreAdv } from './pages/index';
 import GlobalStyle from './globalstyle/globalStyle';
 
 export default function App() {

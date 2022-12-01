@@ -1,14 +1,12 @@
-import React, {useEffect} from 'react';
-import {Button} from '../../components';
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { Button } from '../../components';
+import { Link } from 'react-router-dom';
 import './styles/style.css';
-import {collection, getDocs, doc, getDoc, setDoc} from 'firebase/firestore/lite';
-import {db} from '../../firebase/config/firebase-config';
 
 import * as ROUTES from '../../routes/routes.js';
 
 export default function Main() {
-/*
+  /*
     const matchRef = collection(db, 'match');
     useEffect(async () => {
         const matchDocs = await getDocs(matchRef);
@@ -41,23 +39,23 @@ export default function Main() {
     }, []);
 */
 
-    return (
-        <div className="buttonContainer">
-            <div className="mainButtons">
-                <Link to={ROUTES.Score}>
-                    <Button>Continue Match</Button>
-                </Link>
-            </div>
-            <div className="mainButtons">
-                <Link to={ROUTES.SelectGame}>
-                    <Button>New Match</Button>
-                </Link>
-            </div>
-            <div className="mainButtons">
-                <Link to={ROUTES.History}>
-                    <Button>Match History</Button>
-                </Link>
-            </div>
-        </div>
-    );
+  return (
+    <div className="buttonContainer">
+      <div className="mainButtons">
+        <Link to={ROUTES.Score}>
+          <Button>Continue Match</Button>
+        </Link>
+      </div>
+      <div className="mainButtons">
+        <Link to={ROUTES.SelectGame}>
+          <Button>New Match</Button>
+        </Link>
+      </div>
+      <div className="mainButtons">
+        <Link to={ROUTES.History}>
+          <Button>Match History</Button>
+        </Link>
+      </div>
+    </div>
+  );
 }

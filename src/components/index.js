@@ -4,3 +4,4 @@ export { default as Header } from './header';
 export { default as BrowsingContainer } from './browsingContainer';
 export { default as GameInput } from './playerInput';
 export { default as GeneralContainer } from './generalContainer';
+export { default as TableScore } from './tableScore';
