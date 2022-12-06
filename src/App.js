@@ -13,8 +13,8 @@ export default function App() {
         <BrowsingContainer>
           <Routes>
             <Route path={ROUTES.Home} element={<Home />} />
-            <Route path={ROUTES.Score} element={<Score />} />
-            <Route path={ROUTES.ScoreAdv} element={<ScoreAdv />} />
+            <Route path={`${ROUTES.Score}/:id`} element={<Score />} />
+            <Route path={`${ROUTES.ScoreAdv}/:id`} element={<ScoreAdv />} />
             <Route path={ROUTES.SelectGame} element={<SelectGame />} />
             <Route path={ROUTES.History} element={<History />} />
           </Routes>

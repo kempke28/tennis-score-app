@@ -33,11 +33,9 @@ export default function GameSettings() {
 
   const handleSubmit = async (path) => {
     console.log('handlechange MatchSettings ', matchSettings);
-    const saveMatchesSucced = await saveMatches(matchSettings);
-    if (saveMatchesSucced) {
-      navigate(path);
-    } else {
-      navigate(ROUTES.SelectGame);
+    const newMatchId = await saveMatches(matchSettings);
+    if (newMatchId) {
+      navigate(path + "/" + newMatchId);
     }
   };
 
@@ -108,7 +106,6 @@ export default function GameSettings() {
           <GameInput.Input onClick={handleChange} type="radio" name="tieBreak" value="10 Points">
             10 Points
           </GameInput.Input>
-          }
         </GameInput.InputContainer>
       </GameInput.PlayerForm>
 
