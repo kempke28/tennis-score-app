@@ -25,8 +25,8 @@ export default function Background({ children }) {
   const randomImg = Math.floor(Math.random() * images.length);
 
   return (
-      <div className="backgroundFrame" style={{ backgroundImage: `url(${images[randomImg]})` }}>
-          {children}
-      </div>
+    <div className="backgroundFrame" style={{ backgroundImage: `url(${images[randomImg]})` }}>
+      {children}
+    </div>
   );
 }

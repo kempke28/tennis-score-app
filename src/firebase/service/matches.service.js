@@ -1,14 +1,13 @@
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../config/firebase-config';
-import * as ROUTES from '../../routes/routes';
 
 // Saves a new collection to Cloud Firestore.
 export async function saveMatches(matchSettings) {
   const time = new Date();
   const matchRef = collection(db, 'match');
-  const emptyMatchRef = doc(matchRef);
+  const newMatchRef = doc(matchRef);
   try {
-    await setDoc(emptyMatchRef, {
+    await setDoc(newMatchRef, {
       matchType: matchSettings.matchType,
       player1: matchSettings.player1, //input
       player2: matchSettings.player2, //input
@@ -23,17 +22,24 @@ export async function saveMatches(matchSettings) {
   } catch (error) {
     alert('data could not be saved');
 
-    return false
+    return null;
     //or any other message
   }
-  return true
+  return newMatchRef.id;
 }
 
 // Get a list of matches from your database
 
 export async function getMatches() {
-  const matchReq = collection(db, 'Matches');
+  const matchReq = collection(db, 'match');
   const matchSnapshot = await getDocs(matchReq);
   const matchList = matchSnapshot.docs.map((match) => match.data());
   return matchList;
+}
+
+export async function getMatchById() {
+  const matchRef = collection(db, 'match');
+  const matchSnapshot = await getDocs(matchRef);
+  const matchListId = matchSnapshot.docs.map((match) => console.log (match.id));
+  return matchListId;
 }

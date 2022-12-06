@@ -7,32 +7,23 @@ import {
   InputPlayer
 } from './style/style';
 
-import { useState } from 'react';
-
 export default function GameInput({ children }) {
   return <GameInputContainer>{children}</GameInputContainer>;
 }
 
-GameInput.PlayerForm = function GameInputPlayerForm({ children, ...props }) {
+GameInput.PlayerForm = function GameInputPlayerForm({ children }) {
   return <PlayerForm>{children}</PlayerForm>;
 };
 
-GameInput.InputContainer = function GameInputContainer({
-  children,
-  direction = 'column',
-  ...props
-}) {
+GameInput.InputContainer = function GameInputContainer({ children, direction = 'column' }) {
   return <InputContainer direction={direction}>{children}</InputContainer>;
 };
 
 GameInput.Input = function Input({ children, ...props }) {
-
   return (
     <LabelPlayer htmlFor="player">
       {children}
-      <InputPlayer
-          {...props}
-      />
+      <InputPlayer {...props} />
     </LabelPlayer>
   );
 };

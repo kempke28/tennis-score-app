@@ -1,0 +1,7 @@
+.buttomButtons {
+    margin-top: 18vh;
+    width: 45%;
+    hieght: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}

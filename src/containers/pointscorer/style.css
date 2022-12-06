@@ -1,0 +1,11 @@
+.scoringContainer {
+    display: flex;
+    width: 50vw;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+}
+
+.VS {
+    color: white;
+    font-size: 30px
+}
