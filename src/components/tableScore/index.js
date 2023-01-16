@@ -5,19 +5,19 @@ import { StyledTable, TableBody, TableRow, TableHead, TableData } from './style/
 //   return <StyledTable>{children}</StyledTable>;
 // }
 
-export default function TableScore({ children, ...props  }) {
+export default function TableScore({ children, ...props }) {
   return <StyledTable {...props}>{children}</StyledTable>;
 }
 
-TableScore.TableBody = function TableScoreBody({ children, ...props  }) {
+TableScore.TableBody = function TableScoreBody({ children, ...props }) {
   return <TableBody {...props}>{children}</TableBody>;
 };
 
-TableScore.TableRow = function TableScoreRow({ children, ...props  }) {
+TableScore.TableRow = function TableScoreRow({ children, ...props }) {
   return <TableRow {...props}>{children}</TableRow>;
 };
 
-TableScore.TableHead = function TableScoreData({ children, ...props  }) {
+TableScore.TableHead = function TableScoreData({ children, ...props }) {
   return <TableHead {...props}>{children}</TableHead>;
 };
 
