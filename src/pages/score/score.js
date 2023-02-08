@@ -6,25 +6,36 @@ import PointScorerContainer from '../../containers/pointscorer/pointScore';
 
 import './styles/style.css';
 import { useParams } from 'react-router-dom';
-import { getMatchById } from '../../firebase/service/matches.service';
+import {
+    getMatchById,
+    getMatchDetailsById,
+    getScoreMatchById, getSetsById
+} from '../../firebase/service/matches.service';
 
 export default function Score() {
   const [match, setMatch] = useState(null);
+  const [setScore, setSetScore] = useState(null);
   const params = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const matchResponse = await getMatchById(params.id);
-      console.log(matchResponse);
-      setMatch(matchResponse);
+      const matchDetailsData = await getMatchDetailsById(params.id);
+      //const setDetails = await getSetsById(setId);
+      console.log(matchDetailsData);
+      setMatch(matchDetailsData);
     };
     if (match?.id !== params.id) {
       fetchData();
     }
   }, [params.id, match?.id]);
 
+
+
+
+
+
   if (!match) {
-    return <div>...loading</div>;
+    return <div className="loadingCircle">...loading</div>;
   }
 
   return (

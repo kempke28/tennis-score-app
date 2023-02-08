@@ -9,11 +9,11 @@ export default function TableScoreContainer({ match }) {
       <TableScore.TableBody>
         <TableScore.TableRow>
           <TableScore.TableHead>{match.player1}</TableScore.TableHead>
-          <TableScore.TableData>1</TableScore.TableData>
-          <TableScore.TableData>2</TableScore.TableData>
-          <TableScore.TableData>3</TableScore.TableData>
-          <TableScore.TableData>4</TableScore.TableData>
-          <TableScore.TableData>4</TableScore.TableData>
+          <TableScore.TableData>{}</TableScore.TableData>
+          <TableScore.TableData>{}</TableScore.TableData>
+          <TableScore.TableData>{}</TableScore.TableData>
+          <TableScore.TableData>{}</TableScore.TableData>
+          <TableScore.TableData>{}</TableScore.TableData>
         </TableScore.TableRow>
       </TableScore.TableBody>
       <TableScore.TableBody>
