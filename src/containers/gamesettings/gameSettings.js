@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
 import { useNavigate } from 'react-router-dom';
-import { saveMatches } from '../../firebase/service/matches.service';
+import { createSetsCollection, saveMatches } from '../../firebase/service/matches.service';
 
 import './style.css';
 import * as ROUTES from '../../routes/routes';
 
-export default function GameSettings({ children, ...props }) {
+export default function GameSettings() {
   const navigate = useNavigate();
 
   const [matchType, setMatchType] = useState(false);
@@ -27,17 +27,18 @@ export default function GameSettings({ children, ...props }) {
       ...oldState,
       [e.target.name]: e.target.value
     }));
+
+    console.log('handlechange MatchSettings ', matchSettings);
   };
 
   const handleSubmit = async (path) => {
-    const saveMatchesSucced = await saveMatches(matchSettings)
-    if (saveMatchesSucced) {
-      navigate(path)
-    } else {
-      navigate(ROUTES.SelectGame)
+    console.log('handlechange MatchSettings ', matchSettings);
+    const newMatchId = await saveMatches(matchSettings);
+    await createSetsCollection(newMatchId);
+    if (newMatchId) {
+      navigate(path + '/' + newMatchId);
     }
   };
-
 
   return (
     <GeneralContainer>
@@ -106,7 +107,6 @@ export default function GameSettings({ children, ...props }) {
           <GameInput.Input onClick={handleChange} type="radio" name="tieBreak" value="10 Points">
             10 Points
           </GameInput.Input>
-          }
         </GameInput.InputContainer>
       </GameInput.PlayerForm>
 
