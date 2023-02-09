@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
 import { useNavigate } from 'react-router-dom';
-import { saveMatches } from '../../firebase/service/matches.service';
+import { createSetsCollection, saveMatches } from '../../firebase/service/matches.service';
 
 import './style.css';
 import * as ROUTES from '../../routes/routes';
@@ -30,14 +30,13 @@ export default function GameSettings({ children, ...props }) {
   };
 
   const handleSubmit = async (path) => {
-    const saveMatchesSucced = await saveMatches(matchSettings)
-    if (saveMatchesSucced) {
-      navigate(path)
-    } else {
-      navigate(ROUTES.SelectGame)
+    console.log('handlechange MatchSettings ', matchSettings);
+    const newMatchId = await saveMatches(matchSettings);
+    await createSetsCollection(newMatchId);
+    if (newMatchId) {
+      navigate(path + '/' + newMatchId);
     }
   };
-
 
   return (
     <GeneralContainer>
