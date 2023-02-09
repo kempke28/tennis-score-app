@@ -12,5 +12,9 @@ export const StyledButton = styled.button`
 `;
 
 export const SettingsButton = styled(StyledButton)`
-  margin: 40px 40px 40px 40px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 `;
+
+export const ScoringButton = styled(StyledButton)``;
