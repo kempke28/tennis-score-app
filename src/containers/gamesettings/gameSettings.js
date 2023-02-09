@@ -35,6 +35,8 @@ export default function GameSettings({ children, ...props }) {
     await createSetsCollection(newMatchId);
     if (newMatchId) {
       navigate(path + '/' + newMatchId);
+    } else {
+      navigate(ROUTES.SelectGame);
     }
   };
 
