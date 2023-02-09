@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderContainer from '../../containers/header';
+import HeaderContainer from '../../containers/header/header';
 import GameSettings from '../../containers/gamesettings/gameSettings';
 import { Button } from '../../components';
 

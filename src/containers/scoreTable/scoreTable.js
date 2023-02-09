@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableScore } from '../../components';
 // import { getMatches } from '../../firebase/service/matches.service';
-import './style.css';
+import './scoreTable.css';
 
 export default function TableScoreContainer({ match }) {
   return (
