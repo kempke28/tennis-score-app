@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, setDoc, getDoc } from 'firebase/firestore/lite';
+import { collection, getDocs, doc, setDoc, getDoc, query, where } from 'firebase/firestore/lite';
 import { db } from '../config/firebase-config';
 
 // Saves a new collection to Cloud Firestore.
