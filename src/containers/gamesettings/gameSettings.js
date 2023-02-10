@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { GeneralContainer, Button, GameInput } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import {
-    createSetsCollection,
-    createMatchCollection,
-    createGamesCollection
+  createSetsCollection,
+  createMatchCollection,
+  createGamesCollection
 } from '../../firebase/service/matches.service';
 
 import './style.css';
@@ -112,7 +112,6 @@ export default function GameSettings({ children, ...props }) {
           <GameInput.Input onClick={handleChange} type="radio" name="tieBreak" value="10 Points">
             10 Points
           </GameInput.Input>
-          }
         </GameInput.InputContainer>
       </GameInput.PlayerForm>
 

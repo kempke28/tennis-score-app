@@ -92,30 +92,27 @@ export async function getMatchById(matchId) {
   return matchDoc;
 }
 
-
 export async function getMatchDetailsById(matchId) {
-    const matchDoc = await getMatchById(matchId);
-    const setRef = collection(db, 'sets');
-    const setsQuery = query(setRef, where('matchId', '==', matchId));
-    const setsSnapshot = await getDocs(setsQuery);
-    console.log('getMatchDetails', matchDoc);
-    return {
-        ...matchDoc,
-        sets: setsSnapshot.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-
-        }))
-    };
+  const matchDoc = await getMatchById(matchId);
+  const setRef = collection(db, 'sets');
+  const setsQuery = query(setRef, where('matchId', '==', matchId));
+  const setsSnapshot = await getDocs(setsQuery);
+  console.log('getMatchDetails', matchDoc);
+  return {
+    ...matchDoc,
+    sets: setsSnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id
+    }))
+  };
 }
 
-
 export async function getSetsById(setId) {
-    const setRef = collection(db, 'sets');
-    const setDocRef = doc(setRef, setId);
-    const setSnapShot = await getDoc(setDocRef);
-    const setDoc = { ...setSnapShot.data(), id: setSnapShot.id };
-    return setDoc;
+  const setRef = collection(db, 'sets');
+  const setDocRef = doc(setRef, setId);
+  const setSnapShot = await getDoc(setDocRef);
+  const setDoc = { ...setSnapShot.data(), id: setSnapShot.id };
+  return setDoc;
 }
 
 //update score array function
