@@ -16,8 +16,7 @@ export default function Score() {
   useEffect(() => {
     const fetchData = async () => {
       const matchDetailsData = await getMatchDetailsById(params.id);
-      //const setDetails = await getSetsById(setId);
-      console.log(matchDetailsData);
+      console.log('complete details', matchDetailsData);
       setMatch(matchDetailsData);
     };
     if (match?.id !== params.id) {
@@ -36,7 +35,7 @@ export default function Score() {
     <div className="container">
       <HeaderContainer />
       <TableScoreContainer match={match} />
-      <PointScorerContainer />
+      <PointScorerContainer match={ match } />
       <div className="buttomButtons">
         <Button>Undo</Button>
         <Button>Back</Button>

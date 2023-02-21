@@ -4,14 +4,17 @@ import { TableScore } from '../../components';
 import './scoreTable.css';
 
 export default function TableScoreContainer({ match }) {
+
+    console.log(match.sets[0].details.player1.score);
+
   return (
     <TableScore>
       <TableScore.TableBody>
         <TableScore.TableRow>
           <TableScore.TableHead>{match.player1}</TableScore.TableHead>
-          <TableScore.TableData>1</TableScore.TableData>
-          <TableScore.TableData>2</TableScore.TableData>
-          <TableScore.TableData>3</TableScore.TableData>
+          <TableScore.TableData>{match.sets[0].details.player1.score}</TableScore.TableData>
+          <TableScore.TableData>0</TableScore.TableData>
+          <TableScore.TableData>0</TableScore.TableData>
           <TableScore.TableData>4</TableScore.TableData>
           <TableScore.TableData>4</TableScore.TableData>
         </TableScore.TableRow>
@@ -19,9 +22,9 @@ export default function TableScoreContainer({ match }) {
       <TableScore.TableBody>
         <TableScore.TableRow>
           <TableScore.TableHead>{match.player2}</TableScore.TableHead>
-          <TableScore.TableData>1</TableScore.TableData>
-          <TableScore.TableData>2</TableScore.TableData>
-          <TableScore.TableData>3</TableScore.TableData>
+          <TableScore.TableData>{match.sets[0].details.player2.score}</TableScore.TableData>
+          <TableScore.TableData>0</TableScore.TableData>
+          <TableScore.TableData>0</TableScore.TableData>
           <TableScore.TableData>4</TableScore.TableData>
           <TableScore.TableData>4</TableScore.TableData>
         </TableScore.TableRow>

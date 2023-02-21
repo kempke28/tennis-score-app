@@ -36,10 +36,12 @@ export default function GameSettings({ children, ...props }) {
   const handleSubmit = async (path) => {
     console.log('handlechange MatchSettings ', matchSettings);
     const newMatchId = await createMatchCollection(matchSettings);
-    await createSetsCollection(newMatchId);
-    await createGamesCollection();
+    const newSetId = await createSetsCollection(newMatchId);
+    await createGamesCollection(newSetId);
     if (newMatchId) {
       navigate(path + '/' + newMatchId);
+      return newGamesId
+
     } else {
       navigate(ROUTES.SelectGame);
     }

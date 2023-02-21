@@ -73,16 +73,12 @@ export async function createGamesCollection(setId) {
   } catch (error) {
     alert('cannot create game');
   }
+  return newGameCollection.id
 }
 
 // Get a list of matches from your database
 
-export async function getMatches() {
-  const matchReq = collection(db, 'Matches');
-  const matchSnapshot = await getDocs(matchReq);
-  const matchList = matchSnapshot.docs.map((match) => match.data());
-  return matchList;
-}
+
 
 export async function getMatchById(matchId) {
   const matchRef = collection(db, 'match');
@@ -92,28 +88,37 @@ export async function getMatchById(matchId) {
   return matchDoc;
 }
 
+
+export async function getSetsById(setId) {
+    const setRef = collection(db, 'sets');
+    const setDocRef = doc(setRef, setId);
+    const setSnapShot = await getDoc(setDocRef);
+    const setDoc = { ...setSnapShot.data(), id: setSnapShot.id };
+    return setDoc;
+}
+
 export async function getMatchDetailsById(matchId) {
   const matchDoc = await getMatchById(matchId);
   const setRef = collection(db, 'sets');
   const setsQuery = query(setRef, where('matchId', '==', matchId));
   const setsSnapshot = await getDocs(setsQuery);
+  const setsDocs = setsSnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+  }))
+  const gameRef = collection(db, 'games');
+  const gamesQuery = query(gameRef, where('setId', 'in', setsDocs.map((doc) => (doc.id))));
+  const gamesSnapshot = await getDocs(gamesQuery);
+  const gamesDocs = gamesSnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
   console.log('getMatchDetails', matchDoc);
   return {
     ...matchDoc,
-    sets: setsSnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id
-    }))
+    sets: setsDocs,
+    games: gamesDocs
   };
 }
 
-export async function getSetsById(setId) {
-  const setRef = collection(db, 'sets');
-  const setDocRef = doc(setRef, setId);
-  const setSnapShot = await getDoc(setDocRef);
-  const setDoc = { ...setSnapShot.data(), id: setSnapShot.id };
-  return setDoc;
-}
+
 
 //update score array function
 // export async function updateMatchGameDetails() {
