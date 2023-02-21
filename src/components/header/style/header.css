@@ -1,11 +1,12 @@
 .headerContainer {
     width: 75vw;
     border: red 9px solid;
-    height: 150px;
+    height: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 
 .logo {
     display: flex;

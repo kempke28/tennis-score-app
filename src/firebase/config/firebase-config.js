@@ -15,10 +15,9 @@ const db = getFirestore(firebaseApp);
 
 console.log(process.env);
 if (process.env.NODE_ENV === 'development') {
-    const firebasePort = process.env.firebasePort || 8080;
-    connectFirestoreEmulator(db, 'localhost', firebasePort);
+  const firebasePort = process.env.firebasePort || 8080;
+  connectFirestoreEmulator(db, 'localhost', firebasePort);
 }
-
 
 export default firebaseApp;
 export { db };
